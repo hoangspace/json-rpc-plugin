@@ -73,7 +73,7 @@ class dokuwiki_jsonrpc_server extends IJR_IntrospectionServer {
 
 
     function call($methodname, $args){
-        if(!in_array($methodname,$this->public_methods) && !$this->checkAuth()){
+        if($methodname != "dokuwiki.login" && !in_array($methodname,$this->public_methods) && !$this->checkAuth()){
             return new IJR_Error(-32603, 'server error. not authorized to call method "'.$methodname.'".');
         }
         return parent::call($methodname, $args);
