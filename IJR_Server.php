@@ -45,6 +45,7 @@ class IJR_Server {
     {
         if (!$data) {
             global $HTTP_RAW_POST_DATA;
+            $HTTP_RAW_POST_DATA = file_get_contents("php://input");
             if (!$HTTP_RAW_POST_DATA) {
                die('JSON-RPC server accepts POST requests only.');
             }
